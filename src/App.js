@@ -7,7 +7,14 @@ function App() {
 
   const [data , setData] = useState([]);
   const [loading , setLoading] = useState(true);
+  const [value , setValue] = useState({});
 
+  const handleInput = (e) => {
+    const inputValue = e.target.value
+    setValue({...value , [e.target.name] : inputValue})
+    console.log(value);
+  }
+ 
   useEffect(() => {
     fetch("https:restcountries.com/v3.1/all")
     .then(res => res.json())
@@ -24,13 +31,13 @@ function App() {
           <h2>Countries</h2>
         </div>
         <div className="w-50">
-          <input type="text" className="form-control" placeholder="Enter country name" />
+          <input onChange={handleInput} type="text" className="form-control" placeholder="Enter country name" />
         </div>
       </header>
       <div className="mt-5 container d-flex justify-content-between align-items-center w-full flex-wrap">
       {
         data.map((index, key) => (
-          <div key={key} className="card p-3">
+          <div key={key} className="card p-3 shadow-sm">
             <div className="card__img">
             <img src={index.flags.svg} alt={index.name.common} />
             </div>
