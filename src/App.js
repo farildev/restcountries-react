@@ -1,6 +1,7 @@
 import React, {useEffect , useState} from "react";
 import LoadingScreen from "./components/LoadingScreen";
 import "./assets/styles/style.css"
+import logo from "./assets/images/Countries logo.svg"
 
 function App() {
 
@@ -20,7 +21,9 @@ function App() {
   return (
     <>
       <header className="bg-primary p-4 w-100 shadow position-sticky top-0 left-0">
-        <div className=" container text-white fs-2">Hello</div>
+        <div className=" container text-white fs-2">
+          <img src={""} alt={""}/>
+        </div>
       </header>
       <div className="mt-5 container d-flex justify-content-between align-items-center flex-wrap">
       {
@@ -29,9 +32,9 @@ function App() {
             <img src={index.flags.svg} alt={index.name.common} />
             <div className="card-body d-flex flex-column py-4">
               <h5 className="card-title">{index.name.common}</h5>
-              <span className="card-text">{index.capital}</span>
-              <span className="card-text mt-3">{index.region}</span>
-              <span className="card-text mt-3"></span>
+              <span className="card-text">Capital : {index.capital}</span>
+              <span className="card-text mt-2">Region : {index.region}</span>
+              <span className="card-text mt-2">Population : {index.population}</span>
             </div>
           </div>
         ))
